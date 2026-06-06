@@ -1,0 +1,9 @@
+# Environments and generic OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Ignore large log files from testing
+*.log
+*call-logs*.json

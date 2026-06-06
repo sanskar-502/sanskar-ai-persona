@@ -1,0 +1,21 @@
+# === Core Framework ===
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+
+# === Google Gemini AI ===
+google-genai>=1.0.0
+
+# === RAG Pipeline ===
+langchain-community>=0.2.0
+langchain-text-splitters>=0.2.0
+langchain-core>=0.2.0
+chromadb>=0.4.0
+pypdf>=4.0.0
+
+# === HTTP & Calendar ===
+requests>=2.31.0
+
+# === Deployment ===
+gunicorn>=21.0.0

@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments
+venv/
+env/
+.env
+
+# ChromaDB
+chroma_db/
+
+# Logs
+ngrok.log
