@@ -40,7 +40,7 @@ export default function Home() {
           <div className="text-center mb-3 flex-shrink-0">
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-1">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-violet-400">
-                Talk to Sanskar's AI
+                Talk to Sanskar&apos;s AI
               </span>
             </h1>
             <p className="text-sm text-white/40 max-w-xl mx-auto leading-relaxed">

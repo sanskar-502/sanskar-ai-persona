@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Chat API error:", error);
     return NextResponse.json(
       { error: "Failed to communicate with AI Persona Backend." },
