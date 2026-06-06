@@ -12,10 +12,10 @@ from langchain_core.embeddings import Embeddings
 from google import genai
 
 # Base paths
-BASE_DIR = Path(__file__).resolve().parent.parent
-RESUME_DIR = BASE_DIR / "resume"
-READMES_DIR = BASE_DIR / "readmes"
-CHROMA_PERSIST_DIR = BASE_DIR / "backend" / "chroma_db"
+BACKEND_DIR = Path(__file__).resolve().parent
+RESUME_DIR = BACKEND_DIR / "resume"
+READMES_DIR = BACKEND_DIR / "readmes"
+CHROMA_PERSIST_DIR = BACKEND_DIR / "chroma_db"
 
 
 class GeminiEmbeddings(Embeddings):
