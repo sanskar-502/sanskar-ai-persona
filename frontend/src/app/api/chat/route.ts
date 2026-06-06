@@ -4,9 +4,8 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     
-    // In production, point this to your Railway/deployed backend URL
-    // e.g., const backendUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-    const backendUrl = "http://localhost:8000";
+    // Use environment variable if set, otherwise default to deployed Railway backend
+    const backendUrl = process.env.NEXT_PUBLIC_API_URL || "https://sanskar-ai-persona-production.up.railway.app";
     
     const response = await fetch(`${backendUrl}/chat`, {
       method: "POST",

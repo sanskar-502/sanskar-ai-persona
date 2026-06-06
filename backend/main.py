@@ -215,6 +215,14 @@ async def chat_endpoint(request: ChatRequest):
         raise HTTPException(status_code=500, detail=error_msg)
 
 
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    logger.info(f">>> INCOMING REQUEST: {request.method} {request.url.path} from {request.client.host if request.client else 'unknown'}")
+    response = await call_next(request)
+    logger.info(f"<<< RESPONSE: {response.status_code} for {request.method} {request.url.path}")
+    return response
+
+
 @app.post("/vapi-webhook")
 async def vapi_webhook(request: Request):
     """
@@ -223,6 +231,7 @@ async def vapi_webhook(request: Request):
     """
     try:
         data = await request.json()
+        logger.info(f"Vapi webhook received data keys: {list(data.keys())}")
         message = data.get("message", {})
 
         # Check if this is a tool-call message
@@ -268,7 +277,20 @@ async def vapi_webhook(request: Request):
         return {"error": str(e)}
 
 
+# Catch-all route to debug what Vapi might be hitting
+@app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "DELETE", "PATCH"])
+async def catch_all(request: Request, path: str):
+    body = None
+    try:
+        body = await request.json()
+    except:
+        pass
+    logger.warning(f"!!! CATCH-ALL HIT: {request.method} /{path} - Body keys: {list(body.keys()) if body else 'no body'}")
+    return {"error": f"Unknown route: /{path}", "method": request.method}
+
+
 if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
